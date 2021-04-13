@@ -6,7 +6,7 @@
 <script>
 </script>
 
-<style lang="scss" scrope>
+<style lang="scss" scoped>
     .block{
         display:inline-block;
         width:30px;
