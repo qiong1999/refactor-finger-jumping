@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'block'
+  name: 'block3d'
 }
 </script>
 

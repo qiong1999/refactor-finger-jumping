@@ -7,7 +7,7 @@
 
 <script>
 import piano from '../components/piano'
-import block from '../components/block3d'
+import block from '../components/block'
 export default {
   name: 'home',
   props: ['red'],
