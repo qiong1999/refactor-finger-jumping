@@ -17,7 +17,7 @@ export default {
         width:5px;
         height:15px;
         transform:translate(-1px,9px) rotateZ(-21deg);
-        background:rgb(248, 213, 54);
+        background:rgb(194, 160, 12);
     }
     .header{
         width:11px;

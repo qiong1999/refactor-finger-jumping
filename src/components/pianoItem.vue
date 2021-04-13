@@ -35,6 +35,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../style/variable.scss';
   $n:(1,3,5,7,9);
   .wrapper
   {
@@ -43,8 +44,8 @@ export default {
     //background:#fff;
     border-radius:20px;
    // border:none;
-   border:3px solid rgb(7, 76, 133);
-   box-shadow: 3px 3px 3px rgb(28, 96, 185);
+   border:3px solid $borderColor2;
+   box-shadow: 3px 3px 3px $borderColor2;
   }
   .white div, .black div{
     display:inline-block;
@@ -57,11 +58,10 @@ export default {
     border:1px outset rgb(247, 247, 247);
     border-bottom-right-radius: 4px;
     border-bottom-left-radius: 4px;
-    border-top:11px solid rgba(106, 151, 182, 0.3);
+    border-top:11px solid $boxShadow2;
     box-shadow:1px 1px 1px rgb(238, 237, 237);
     &:active{
       background:linear-gradient(#fff,#fff,#fff,rgb(212, 211, 211));
-      border-top:11px solid rgb(191, 220, 231,0.5);
     }
     &:nth-child(1){
       border-top-left-radius: 20px;
