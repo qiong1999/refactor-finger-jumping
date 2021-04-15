@@ -1,42 +1,12 @@
 <template>
   <div class="home">
     <div class="blockTrack">
-       <span>
+       <span v-for="item in blockList" :key="item" :class="item['class']" >
          <block />
-       </span>
-       <span>
-          <block />
-       </span>
-       <span>
-          <block />
-       </span>
-       <span>
-          <block />
-       </span>
-       <span>
-          <block />
-       </span>
-       <span>
-          <block />
-       </span>
-       <span>
-          <block />
        </span>
     </div>
     <div class="bombTrack">
-       <span>
-         <bomb />
-       </span>
-       <span>
-         <bomb />
-       </span>
-       <span>
-         <bomb />
-       </span>
-       <span>
-         <bomb />
-       </span>
-       <span>
+       <span v-for="item in bombList" :key="item" :class="item['class']" >
          <bomb />
        </span>
     </div>
@@ -51,7 +21,7 @@
 import piano from '../components/piano'
 import block from '../components/block'
 import bomb from '../components/bomb'
-import { reactive } from 'vue'
+import { reactive, computed } from 'vue'
 export default {
   name: 'home',
   components: {
@@ -60,8 +30,30 @@ export default {
     bomb
   },
   setup () {
-    const blockList = [1, 2, 3, 4, 5, 6, 7]
-    const bombList = [1, 2, 3, 4, 5]
+    const blockList = [
+      { class: 'blockRun1' },
+      { class: 'blockRun' },
+      { class: 'blockRun1' },
+      { class: 'blockRun' },
+      { class: 'blockRun' },
+      { class: 'blockRun1' },
+      { class: 'blockRun' },
+      { class: 'blockRun1' },
+      { class: 'blockRun' },
+      { class: 'blockRun1' },
+      { class: 'blockRun' },
+      { class: 'blockRun1' },
+      { class: 'blockRun1' },
+      { class: 'blockRun' }
+    ]
+
+    const bombList = [
+      { class: 'bombRun1' },
+      { class: 'bombRun' },
+      { class: 'bombRun1' },
+      { class: 'bombRun' },
+      { class: 'bombRun' }
+    ]
     const state = reactive({
       position: 'absolute;',
       bottom: '17px;',
@@ -69,7 +61,7 @@ export default {
       transform: 'translate(-50%);'
     })
     return {
-      state
+      state, blockList, bombList
     }
   }
 }
@@ -77,6 +69,7 @@ export default {
 </script>
 
 <style lang="scss" scrope>
+@import '../style/variable.scss';
 .home{
    position:relative;
    width:100vw;
@@ -92,30 +85,39 @@ export default {
 .blockTrack,.bombTrack{
   display:inline-block;
   position:absolute;
+  max-width:18.9rem;
   top:0;
   bottom:21rem;
   left:50%;
   transform:translate(-50%);
+
 }
 .blockTrack{
  & span{
   display:inline-block;
   width:2.7rem;
-  animation:blockRun 10s infinite;
 }
+}
+.blockRun{
+  animation:blockRun timer() infinite;
+  animation-fill-mode: forwards;
+}
+.blockRun1{
+  animation:blockRun timer() infinite;
+   animation-fill-mode:forwards;
 }
 @keyframes blockRun {
    0%{
-     transform: translateY(0px);
-   }
-   10%{
-     transform:translateY(200px)
-   }
-   20%{
-     transform:translateY(300px);
+     transform: translateY(0rem);
    }
    30%{
-     transform:translateY(500px);
+     transform:translateY(31rem)
+   }
+   70%{
+     transform:translateY(71rem);
+   }
+   100%{
+     transform:translateY(93rem);
    }
  }
 .bombTrack{
@@ -125,21 +127,28 @@ export default {
  }
  & span:nth-child(2){
    margin-right:2.5rem;
-    animation:bombRun 10s infinite;
  }
+}
+.bombRun{
+  animation:bombRun timer() infinite;
+  animation-fill-mode:forwards;
+}
+.bombRun1{
+  animation:bombRun timer() infinite;
+  animation-fill-mode:forwards;
 }
 @keyframes bombRun {
    0%{
      transform: translateY(0px);
    }
-   10%{
-     transform:translateY(250px)
-   }
-   20%{
-     transform:translateY(370px);
-   }
    30%{
-     transform:translateY(500px);
+     transform:translateY(31rem)
+   }
+   70%{
+     transform:translateY(71rem);
+   }
+   100%{
+     transform:translateY(93rem);
    }
  }
 </style>
