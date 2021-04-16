@@ -7,7 +7,6 @@ $themColor2:rgb(219, 42, 42);
 $lineColor2:rgb(226, 44, 44);
 $borderColor2:rgb(158, 6, 6);
 $boxShadow2:rgb(248, 134, 134,0.5);
-
 @function timer(){
-    @return (random(5)+3) + s;
+    @return (random(5)+2) + s;
 }

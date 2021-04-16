@@ -32,26 +32,26 @@ export default {
   setup () {
     const blockList = [
       { class: 'blockRun1' },
-      { class: 'blockRun' },
+      { class: 'blockRun3' },
       { class: 'blockRun1' },
       { class: 'blockRun' },
-      { class: 'blockRun' },
+      { class: 'blockRun3' },
       { class: 'blockRun1' },
-      { class: 'blockRun' },
-      { class: 'blockRun1' },
-      { class: 'blockRun' },
+      { class: 'blockRun3' },
       { class: 'blockRun1' },
       { class: 'blockRun' },
       { class: 'blockRun1' },
+      { class: 'blockRun3' },
       { class: 'blockRun1' },
+      { class: 'blockRun3' },
       { class: 'blockRun' }
     ]
 
     const bombList = [
       { class: 'bombRun1' },
-      { class: 'bombRun' },
+      { class: 'bombRun3' },
       { class: 'bombRun1' },
-      { class: 'bombRun' },
+      { class: 'bombRun3' },
       { class: 'bombRun' }
     ]
     const state = reactive({
@@ -100,24 +100,22 @@ export default {
 }
 .blockRun{
   animation:blockRun timer() infinite;
-  animation-fill-mode: forwards;
+  //animation-fill-mode: forwards;
 }
 .blockRun1{
   animation:blockRun timer() infinite;
-   animation-fill-mode:forwards;
+  // animation-fill-mode:forwards;
+}
+.blockRun3{
+  animation:blockRun timer() infinite;
+  // animation-fill-mode:forwards;
 }
 @keyframes blockRun {
    0%{
-     transform: translateY(0rem);
-   }
-   30%{
-     transform:translateY(31rem)
-   }
-   70%{
-     transform:translateY(71rem);
+     transform: translateY(0px);
    }
    100%{
-     transform:translateY(93rem);
+     transform:translateY(90vh);
    }
  }
 .bombTrack{
@@ -131,24 +129,22 @@ export default {
 }
 .bombRun{
   animation:bombRun timer() infinite;
-  animation-fill-mode:forwards;
+ // animation-fill-mode:forwards;
 }
 .bombRun1{
   animation:bombRun timer() infinite;
-  animation-fill-mode:forwards;
+//  animation-fill-mode:forwards;
+}
+.bombRun3{
+  animation:bombRun timer() infinite;
+//  animation-fill-mode:forwards;
 }
 @keyframes bombRun {
    0%{
      transform: translateY(0px);
    }
-   30%{
-     transform:translateY(31rem)
-   }
-   70%{
-     transform:translateY(71rem);
-   }
    100%{
-     transform:translateY(93rem);
+     transform:translateY(90vh);
    }
  }
 </style>
