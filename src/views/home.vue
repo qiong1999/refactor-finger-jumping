@@ -1,16 +1,18 @@
 <template>
   <div class="home">
-    <block />
-     <bomb />
     <div class="blockTrack">
       <span v-for="i in Tracks['blockTrack']" :key="i.key">
-        <span v-for="item in i.value" :key="`${i.key} ${item}`" style=" background:green;">
-          {{item}}{{i.key}}
+        <span v-for="item in i.value" :key="`${i.key} ${item}`" class="blockRun1">
+          <block />
         </span>
       </span>
     </div>
     <div class="bombTrack">
-      <span v-for="i in 5" :key="i">{{i}}</span>
+      <span v-for="i in Tracks['bombTrack']" :key="i.key" ckass="blockRun1">
+        <span v-for="item in i.value" :key="`${i.key} ${item}`" class="bombRun1">
+          <bomb />
+        </span>
+      </span>
     </div>
     <div class="content">
       <piano
@@ -35,31 +37,36 @@ export default {
   setup () {
     const Tracks = reactive({
       blockTrack: [
-        { key: 'c', value: 3 },
-        { key: 'd', value: 2 },
-        { key: 'e', value: 1 },
-        { key: 'f', value: 0 },
-        { key: 'g', value: 0 },
-        { key: 'a', value: 0 },
-        { key: 'b', value: 0 }],
+        { key: 'c', value: [] },
+        { key: 'd', value: [] },
+        { key: 'e', value: [] },
+        { key: 'f', value: [] },
+        { key: 'g', value: [] },
+        { key: 'a', value: [] },
+        { key: 'b', value: [] }],
       bombTrack: [
-        { key: 'cd', value: 0 },
-        { key: 'de', value: 0 },
-        { key: 'fg', value: 0 },
-        { key: 'ga', value: 0 },
-        { key: 'ab', value: 0 }
+        { key: 'cd', value: [] },
+        { key: 'de', value: [] },
+        { key: 'fg', value: [] },
+        { key: 'ga', value: [] },
+        { key: 'ab', value: [] }
       ]
     })
     const handleClick = (params) => {
+      // let timer
       for (const track in Tracks) {
         // console.log(Tracks[track], 'track')
         for (const item in Tracks[track]) {
         //  console.log(Tracks[track][item], 'item')
           if (Tracks[track][item].key === params) {
-            Tracks[track][item].value += 1
+            Tracks[track][item].value.unshift('1')
+            setTimeout(() => {
+              Tracks[track][item].value.pop()
+            }, 5000)
           }
         }
       }
+      // clearTimeout(timer)
     }
     return {
       Tracks,
@@ -100,23 +107,24 @@ export default {
   vertical-align: top;
   width:2.7rem;
   height:100%;
-  background:red;
   min-width:7px;
   & span{
+   position:absolute;
     height:30px;
   }
 }
 }
 .blockRun1{
-  animation:blockRun timer() infinite;
-  //animation-fill-mode: forwards;
+  top:0;
+  animation:blockRun timer();
+  animation-fill-mode: forwards;
 }
 .blockRun2{
-  animation:blockRun timer() infinite;
+  animation:blockRun timer();
   // animation-fill-mode:forwards;
 }
 .blockRun3{
-  animation:blockRun timer() infinite;
+  animation:blockRun timer();
   // animation-fill-mode:forwards;
 }
 @keyframes blockRun {
@@ -135,14 +143,17 @@ export default {
   // background:yellow;
    transform:translateX(1.25rem);
   // transform:translateY(-100%)
+  & span{
+    position:absolute;
+  }
  }
  & span:nth-child(2){
    margin-right:2.5rem;
  }
 }
 .bombRun1{
-  animation:bombRun timer() infinite;
- // animation-fill-mode:forwards;
+  animation:bombRun timer() ;
+  animation-fill-mode:forwards;
 }
 .bombRun2{
   animation:bombRun timer() infinite;
