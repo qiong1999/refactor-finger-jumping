@@ -1,5 +1,5 @@
 <template>
-      <div class="piano" :style="positionStyle">
+      <div class="piano" @click="Click">
         <div class="line"></div>
           <piano-item></piano-item>
       </div>
@@ -13,19 +13,13 @@ export default {
   components: {
     pianoItem
   },
-  props: ['position', 'bottom', 'left', 'transform'],
-  setup (props) {
-    const state = reactive({
-      position: props.position,
-      bottom: props.bottom,
-      left: props.left,
-      transform: props.transform
-    })
-    const positionStyle = computed(() => {
-      return `position:${state.position}; bottom:${state.bottom}; left:${state.left}; transform:${state.transform};`
-    })
-    // console.log('props', props)
-    return { state, positionStyle }
+  props: [],
+  setup (propsco, context) {
+    const Click = (e) => {
+      console.log(e.target)
+      context.emit('handleClick', e.target.id)
+    }
+    return { Click }
   }
 }
 </script>
