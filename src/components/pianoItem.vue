@@ -4,20 +4,20 @@
     @click="handleClick"
     >
       <div class="white">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <div id="c"></div>
+        <div id="d"></div>
+        <div id="e"></div>
+        <div id="f"></div>
+        <div id="g"></div>
+        <div id="a"></div>
+        <div id="b"></div>
       </div>
       <div class="black">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <div id="cd"></div>
+        <div id="de"></div>
+        <div id="fg"></div>
+        <div id="ga"></div>
+        <div id="ab"></div>
       </div>
     </div>
 </template>
@@ -26,8 +26,27 @@
 export default {
   name: 'pianoItem',
   setup () {
+    const audioMap = {
+      c: '/audio/c3.mp3',
+      cd: '/audio/c-3.mp3',
+      d: '/audio/d3.mp3',
+      de: '/audio/d-3.mp3',
+      e: '/audio/e3.mp3',
+      f: '/audio/f3.mp3',
+      fg: '/audio/f-3.mp3',
+      g: '/audio/g3.mp3',
+      ga: '/audio/g-3.mp3',
+      a: '/audio/a3.mp3',
+      ab: '/audio/a-3.mp3',
+      b: '/audio/b3.mp3'
+    }
+    const audioDiv = document.createElement('audio')
     const handleClick = (e) => {
-      console.log(e.target)
+      const id = e.target.id
+      audioDiv.src = audioMap[id]
+      document.body.appendChild(audioDiv)
+      // console.log('audio', audioDiv)
+      audioDiv.play()
     }
     return { handleClick }
   }

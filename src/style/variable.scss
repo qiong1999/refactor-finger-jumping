@@ -10,3 +10,6 @@ $boxShadow2:rgb(248, 134, 134,0.5);
 @function timer(){
     @return (random(5)+2) + s;
 }
+@function widther(){
+    @return (random(15)+5) ;
+}

@@ -31,28 +31,28 @@ export default {
   },
   setup () {
     const blockList = [
-      { class: 'blockRun1' },
-      { class: 'blockRun3' },
-      { class: 'blockRun1' },
-      { class: 'blockRun' },
-      { class: 'blockRun3' },
-      { class: 'blockRun1' },
-      { class: 'blockRun3' },
-      { class: 'blockRun1' },
-      { class: 'blockRun' },
-      { class: 'blockRun1' },
-      { class: 'blockRun3' },
-      { class: 'blockRun1' },
-      { class: 'blockRun3' },
-      { class: 'blockRun' }
+      { id: 'b1', class: 'blockRun1' },
+      { id: 'b2', class: 'blockRun3' },
+      { id: 'b3', class: 'blockRun1' },
+      { id: 'b4', class: 'blockRun' },
+      { id: 'b5', class: 'blockRun3' },
+      { id: 'b6', class: 'blockRun1' },
+      { id: 'b7', class: 'blockRun3' },
+      { id: 'b8', class: 'blockRun1' },
+      { id: 'b9', class: 'blockRun' },
+      { id: 'b10', class: 'blockRun1' },
+      { id: 'b11', class: 'blockRun3' },
+      { id: 'b12', class: 'blockRun1' },
+      { id: 'b13', class: 'blockRun3' },
+      { id: 'b14', class: 'blockRun' }
     ]
 
     const bombList = [
-      { class: 'bombRun1' },
-      { class: 'bombRun3' },
-      { class: 'bombRun1' },
-      { class: 'bombRun3' },
-      { class: 'bombRun' }
+      { id: 'm1', class: 'bombRun1' },
+      { id: 'm2', class: 'bombRun3' },
+      { id: 'm3', class: 'bombRun1' },
+      { id: 'm4', class: 'bombRun3' },
+      { id: 'm5', class: 'bombRun' }
     ]
     const state = reactive({
       position: 'absolute;',
@@ -60,8 +60,11 @@ export default {
       left: '50%;',
       transform: 'translate(-50%);'
     })
+    const handleClick = () => {
+      console.log('click')
+    }
     return {
-      state, blockList, bombList
+      state, blockList, bombList, handleClick
     }
   }
 }
@@ -115,7 +118,7 @@ export default {
      transform: translateY(0px);
    }
    100%{
-     transform:translateY(90vh);
+     transform:translateY(87vh);
    }
  }
 .bombTrack{
@@ -144,7 +147,7 @@ export default {
      transform: translateY(0px);
    }
    100%{
-     transform:translateY(90vh);
+     transform:translateY(87vh);
    }
  }
 </style>

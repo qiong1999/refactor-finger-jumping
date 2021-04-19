@@ -1,14 +1,16 @@
 <template>
-  <home/>
+  <home />
 </template>
 
 <script>
 import home from './views/home'
 import { watch } from 'vue'
+// import block from './components/block'
 export default {
   name: 'App',
   components: {
     home
+    // block
   },
   setup () {
     watch(() => {
