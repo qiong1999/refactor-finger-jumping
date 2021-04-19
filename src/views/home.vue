@@ -34,17 +34,17 @@ export default {
       { id: 'b1', class: 'blockRun1' },
       { id: 'b2', class: 'blockRun3' },
       { id: 'b3', class: 'blockRun1' },
-      { id: 'b4', class: 'blockRun' },
+      { id: 'b4', class: 'blockRun2' },
       { id: 'b5', class: 'blockRun3' },
       { id: 'b6', class: 'blockRun1' },
       { id: 'b7', class: 'blockRun3' },
-      { id: 'b8', class: 'blockRun1' },
-      { id: 'b9', class: 'blockRun' },
-      { id: 'b10', class: 'blockRun1' },
-      { id: 'b11', class: 'blockRun3' },
-      { id: 'b12', class: 'blockRun1' },
-      { id: 'b13', class: 'blockRun3' },
-      { id: 'b14', class: 'blockRun' }
+      { id: 'b11', class: 'blockRun2' },
+      { id: 'b22', class: 'blockRun1' },
+      { id: 'b33', class: 'blockRun2' },
+      { id: 'b44', class: 'blockRun1' },
+      { id: 'b55', class: 'blockRun3' },
+      { id: 'b66', class: 'blockRun1' },
+      { id: 'b77', class: 'blockRun3' }
     ]
 
     const bombList = [
@@ -52,19 +52,13 @@ export default {
       { id: 'm2', class: 'bombRun3' },
       { id: 'm3', class: 'bombRun1' },
       { id: 'm4', class: 'bombRun3' },
-      { id: 'm5', class: 'bombRun' }
+      { id: 'm5', class: 'bombRun2' }
     ]
-    const state = reactive({
-      position: 'absolute;',
-      bottom: '17px;',
-      left: '50%;',
-      transform: 'translate(-50%);'
-    })
     const handleClick = () => {
       console.log('click')
     }
     return {
-      state, blockList, bombList, handleClick
+      blockList, bombList, handleClick
     }
   }
 }
@@ -101,11 +95,11 @@ export default {
   width:2.7rem;
 }
 }
-.blockRun{
+.blockRun1{
   animation:blockRun timer() infinite;
   //animation-fill-mode: forwards;
 }
-.blockRun1{
+.blockRun2{
   animation:blockRun timer() infinite;
   // animation-fill-mode:forwards;
 }
@@ -130,11 +124,11 @@ export default {
    margin-right:2.5rem;
  }
 }
-.bombRun{
+.bombRun1{
   animation:bombRun timer() infinite;
  // animation-fill-mode:forwards;
 }
-.bombRun1{
+.bombRun2{
   animation:bombRun timer() infinite;
 //  animation-fill-mode:forwards;
 }
