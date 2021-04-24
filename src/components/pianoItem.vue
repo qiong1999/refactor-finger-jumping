@@ -2,6 +2,9 @@
     <div
     class="wrapper"
     @click="handleClick"
+    @mousedown="handledown"
+    @mousemove="handlemove"
+    @mouseup="handleup"
     >
       <div class="white">
         <div id="c"></div>
@@ -41,6 +44,15 @@ export default {
       b: '/audio/b3.mp3'
     }
     const audioDiv = document.createElement('audio')
+    const handledown = (e) => {
+      console.log('mousedown')
+    }
+    const handlemove = (e) => {
+      console.log('mousemove')
+    }
+    const handlup = (e) => {
+      console.log('mouseup')
+    }
     const handleClick = (e) => {
       const id = e.target.id
       audioDiv.src = audioMap[id]
@@ -63,8 +75,8 @@ export default {
     //background:#fff;
     border-radius:20px;
    // border:none;
-   border:3px solid $borderColor2;
-   box-shadow: 3px 3px 3px $borderColor2;
+   border:3px solid $borderColor1;
+   box-shadow: 3px 3px 3px $borderColor1;
   }
   .white div, .black div{
     display:inline-block;
@@ -77,7 +89,7 @@ export default {
     border:1px outset rgb(247, 247, 247);
     border-bottom-right-radius: 4px;
     border-bottom-left-radius: 4px;
-    border-top:11px solid $boxShadow2;
+    border-top:11px solid $boxShadow1;
     box-shadow:1px 1px 1px rgb(238, 237, 237);
     &:active{
       background:linear-gradient(#fff,#fff,#fff,rgb(212, 211, 211));

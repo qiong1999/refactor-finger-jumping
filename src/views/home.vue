@@ -1,5 +1,7 @@
 <template>
   <div class="home">
+    <button class="login"  @click="handleTo('login')">登录</button>
+    <button class="sign" @click="handleTo('sign')">注册</button>
     <div class="blockTrack">
       <span v-for="i in Tracks['blockTrack']" :key="i.key">
         <span v-for="item in i.value" :key="`${i.key} ${item}`" class="blockRun1">
@@ -26,7 +28,8 @@
 import piano from '../components/piano'
 import block from '../components/block'
 import bomb from '../components/bomb'
-import { reactive, computed } from 'vue'
+import { reactive } from 'vue'
+import { useRouter } from 'vue-router'
 export default {
   name: 'home',
   components: {
@@ -34,7 +37,9 @@ export default {
     block,
     bomb
   },
-  setup () {
+  setup (props, context) {
+    console.log(props)
+    const router = useRouter()
     const Tracks = reactive({
       blockTrack: [
         { key: 'c', value: [] },
@@ -68,9 +73,13 @@ export default {
       }
       // clearTimeout(timer)
     }
+    const handleTo = (param) => {
+      router.push(`/${param}`)
+    }
     return {
       Tracks,
-      handleClick
+      handleClick,
+      handleTo
     }
   }
 }
@@ -83,7 +92,30 @@ export default {
    position:relative;
    width:100vw;
    height:100vh;
-   background:pink;
+   background:rgb(130, 231, 245);
+   .login, .sign {
+     float:right;
+     border:none;
+     outline:none;
+     margin-top:1rem;
+     padding:7px 17px;
+     font-size:1.1rem;
+     font-weight: bolder;
+     background:none;
+     color: $themColor1;
+   }
+   .login:focus, .sign:focus, .login:hover, .sign:hover{
+     background:$themColor1;
+     border-radius:3px;
+     box-shadow:1px 1px 1px rgb(134, 134, 134);
+     color:#fff;
+   }
+   .login{
+     margin-right:10rem;
+   }
+   .sign {
+     margin-right:7px;
+   }
 }
 .content{
   position:absolute;
