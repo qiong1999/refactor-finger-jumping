@@ -5,7 +5,9 @@ function ajax (
     type: options.type || 'get',
     url: options.url || '',
     data: options.data || {},
-    header: options.header || { 'Content-Type': 'application', Authorization: '' }
+    header: options.header || { 'Content-Type': 'application/json', Authorization: '' },
+    success: options.success || function (data) { console.log(data) },
+    error: options.error || function (data) { console.log(data) }
   }
   // 创建ajax对象
   const xhr = new XMLHttpRequest()
@@ -23,8 +25,7 @@ function ajax (
   }
   // 配置ajax对象
   xhr.open(options.type, options.url)
-  console.log('header', options)
-  xhr.setRequestHeader('Authorization', options.header.Authorization)
+  // xhr.setRequestHeader('Authorization', options.header.Authorization)
   if (options.type === 'post') {
     const contentType = options.header['Content-Type']
     // 设置请求类型格式

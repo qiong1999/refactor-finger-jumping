@@ -11,20 +11,32 @@
 <script>
 import { reactive } from 'vue'
 import { ajax } from '../request'
+import { useRouter } from 'vue-router'
 export default {
   name: 'form',
-  setup () {
+  props: {
+    goTo: String
+  },
+  setup (props, context) {
+    const router = useRouter()
     const state = reactive({
       email: '',
       username: '',
       password: ''
     })
-
     const handleClick = () => {
+      console.log(state)
       ajax({
-        url: 'http://localhost:5000/login',
-        type: 'POST',
-        data: state
+        url: 'http://localhost:5000/register',
+        type: 'post',
+        data: state,
+        success: function (data) {
+          console.log(data, 'success')
+          router.push(`/${props.goTo}`)
+        },
+        error: function (data) {
+          console.log(data, 'err')
+        }
       })
     }
     return { handleClick, state }
