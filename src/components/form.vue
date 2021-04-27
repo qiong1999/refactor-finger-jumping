@@ -5,7 +5,7 @@
   <br />
   <input placeholder="输入密码" class="password" v-model="state.password" />
   <br />
-  <button class="btn" @click="handleClick">注册</button>
+  <button class="btn" @click="handleClick">{{type}}</button>
 </template>
 
 <script>
@@ -15,7 +15,9 @@ import { useRouter } from 'vue-router'
 export default {
   name: 'form',
   props: {
-    goTo: String
+    goTo: String,
+    type: String,
+    req: String
   },
   setup (props, context) {
     const router = useRouter()
@@ -27,7 +29,7 @@ export default {
     const handleClick = () => {
       console.log(state)
       ajax({
-        url: 'http://localhost:5000/register',
+        url: `http://localhost:5000/${props.req}`,
         type: 'post',
         data: state,
         success: function (data) {
