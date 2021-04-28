@@ -1,7 +1,7 @@
 <template>
     <div class="login">
-        <div class="form">
-            <Form />
+        <div class="form" >
+            <Form goTo="login" req="users/register" type="注册"/>
         </div>
     </div>
 </template>

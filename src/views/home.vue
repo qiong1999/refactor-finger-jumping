@@ -38,7 +38,6 @@ export default {
     bomb
   },
   setup (props, context) {
-    console.log(props)
     const router = useRouter()
     const Tracks = reactive({
       blockTrack: [

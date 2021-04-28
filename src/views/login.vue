@@ -1,14 +1,18 @@
 <template>
     <div class="container">
         <div class="login">
-           <a id="login" ref="aDom">login with GitHub</a>
+          <Form type="登录" goTo="home" req="users/login" />
         </div>
     </div>
 </template>
 
 <script>
+import Form from '../components/form.vue'
 export default {
   name: 'login',
+  components: {
+    Form
+  },
   setup () {
     return { }
   }
