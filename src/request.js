@@ -1,3 +1,4 @@
+
 function ajax (
   options
 ) {
@@ -13,7 +14,6 @@ function ajax (
   const xhr = new XMLHttpRequest()
   xhr.withCredenticals = true
   // 拼接请求参数的变量
-
   let params = ''
   for (const attr in options.data) {
     params += attr + '=' + options.data[attr] + '&'
@@ -25,7 +25,7 @@ function ajax (
   }
   // 配置ajax对象
   xhr.open(options.type, options.url)
-  // xhr.setRequestHeader('Authorization', options.header.Authorization)
+  xhr.setRequestHeader('Authorization', options.header.Authorization)
   if (options.type === 'post') {
     const contentType = options.header['Content-Type']
     // 设置请求类型格式
@@ -54,6 +54,4 @@ function ajax (
   }
 }
 
-module.exports = {
-  ajax
-}
+export default ajax

@@ -10,7 +10,7 @@
 
 <script>
 import { reactive } from 'vue'
-import { ajax } from '../request'
+import ajax from '../request'
 import { useRouter } from 'vue-router'
 export default {
   name: 'form',
@@ -27,14 +27,17 @@ export default {
       password: ''
     })
     const handleClick = () => {
-      console.log(state)
       ajax({
         url: `http://localhost:5000/${props.req}`,
         type: 'post',
         data: state,
         success: function (data) {
-          console.log(data, 'success')
-          router.push(`/${props.goTo}`)
+          if (props.goTo) {
+            localStorage.setItem('token', JSON.parse(data).token)
+            console.log(localStorage.getItem('token'))
+          }
+          console.log('success')
+          router.push(`/${props.goTo}/pageOne`)
         },
         error: function (data) {
           console.log(data, 'err')
