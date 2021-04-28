@@ -1,6 +1,5 @@
 <template>
     <div> pageOne </div>
-    <button @click="handleClick">发送请求</button>
 </template>
 
 <script>
@@ -27,6 +26,7 @@ export default {
         }
       })
     }
+    handleClick()
     return { handleClick }
   }
 }
